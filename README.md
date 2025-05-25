@@ -1,23 +1,16 @@
-# Análisis de Cancelación de Líneas Móviles en Colombia
+# Análisis de Fidelización y Comparación de Proveedores de Servicios Móviles en Colombia (Desde 2022)
 
 ## Objetivo del Proyecto
 
-Este proyecto tiene como finalidad desarrollar una aplicación de análisis de datos que consuma información desde una API pública, la almacene en una base de datos relacional y permita realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar). 
+Este proyecto busca analizar el comportamiento de los proveedores de servicios móviles en Colombia a partir del año 2022, con un enfoque en la fidelización de clientes y la comparación entre operadores.
 
-El enfoque principal del análisis está en el comportamiento de las líneas móviles en Colombia, con especial atención a las líneas **retiradas** por proveedor de servicios móviles a lo largo del tiempo (por año y trimestre). Este análisis busca responder preguntas clave como:
+Utilizando datos trimestrales sobre líneas móviles activadas, retiradas y en servicio, el análisis se centra en responder preguntas clave como:
 
-- ¿Qué proveedores presentan mayores volúmenes de líneas retiradas?
-- ¿Existen periodos con un incremento significativo en la cancelación de líneas?
-- ¿Cómo se comparan las líneas retiradas con las líneas activas en cada trimestre?
+- ¿Qué proveedores presentan mejores o peores índices de fidelización?
+- ¿Cómo se compara el volumen de líneas retiradas respecto a las líneas activadas y en servicio?
+- ¿Qué tendencias se observan en la retención y abandono de clientes a lo largo del tiempo?
 
-### Justificación
-
-Comprender las tendencias de retiro de líneas móviles puede aportar información valiosa para:
-
-- Evaluar la **competitividad** en el mercado móvil colombiano.
-- Identificar posibles problemas de **fidelización** o **satisfacción del cliente**.
-- Apoyar estudios sobre la **calidad del servicio** de los distintos operadores móviles.
-- Detectar patrones estacionales o cambios relevantes en el comportamiento del usuario.
+Este análisis es útil para evaluar la estabilidad y competitividad del mercado móvil, ayudando a entender la capacidad de los operadores para mantener su base de clientes y detectar posibles periodos críticos.
 
 ---
 
@@ -27,7 +20,7 @@ El dataset contiene información histórica sobre el comportamiento de las líne
 
 | **Campo**              | **Descripción**                                                                 |
 |------------------------|---------------------------------------------------------------------------------|
-| `AÑO`                  | Año calendario del registro (por ejemplo, 2021, 2022).                         |
+| `AÑO`                  | Año calendario del registro (por ejemplo, 2022, 2023).                         |
 | `TRIMESTRE`            | Trimestre del año (1, 2, 3 o 4).                                                |
 | `PROVEEDOR`            | Nombre del operador móvil (ej. Avantel, Uff Movil, Virgin Mobile, etc.).           |
 | `LINEAS EN SERVICIO`   | Total de líneas móviles activas en ese trimestre.                              |
