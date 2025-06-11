@@ -6,6 +6,7 @@ from controllers.main_controller import MainController
 
 
 # --- Configuración de base de datos de pruebas PostgreSQL ---
+# Asegúrate de que esta base exista y tenga permisos de escritura
 DATABASE_URL = "postgresql://admin:123@localhost/datos_test"
 
 # Crea engine y sesión para pruebas
@@ -65,7 +66,7 @@ def test_eliminar_estacion_id(mocker, session_prueba):
         abonados_servicio=800,
         abonados_pospago=500,
         abonados_prepago=300,
-        lineas_activas=750,
+        lineas_activadas=750,
         lineas_retiradas=50
     )
     session_prueba.add(estacion)
@@ -84,8 +85,8 @@ def test_eliminar_estacion_id(mocker, session_prueba):
 def test_listar_estaciones_por_ano(capsys, mocker, session_prueba):
     # Agregar varias estaciones con distintos años
     estaciones = [
-        Estacion(año=2022, trimestre="1", nombre="Tigo", abonados_servicio=500, abonados_pospago=300, abonados_prepago=200, lineas_activas=450, lineas_retiradas=50),
-        Estacion(año=2023, trimestre="2", nombre="Claro", abonados_servicio=1000, abonados_pospago=600, abonados_prepago=400, lineas_activas=950, lineas_retiradas=50),
+        Estacion(año=2022, trimestre="1", nombre="Tigo", abonados_servicio=500, abonados_pospago=300, abonados_prepago=200, lineas_activadas=450, lineas_retiradas=50),
+        Estacion(año=2023, trimestre="2", nombre="Claro", abonados_servicio=1000, abonados_pospago=600, abonados_prepago=400, lineas_activadas=950, lineas_retiradas=50),
     ]
     session_prueba.add_all(estaciones)
     session_prueba.commit()
