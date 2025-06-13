@@ -1,0 +1,10 @@
+pip install requests
+pip install sqlalchemy
+pip install psycopg2
+pip install pytest-mock
+
+pip install pytest
+pip install matplotlib seaborn
+pip install pandas
+
+prueba test: python -m pytest test/test_controller.py -v

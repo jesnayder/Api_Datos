@@ -1,0 +1,18 @@
+Índice de Retención de Clientes:
+Mide qué porcentaje de clientes actuales son clientes que ya estaban en el periodo anterior, es decir, cuántos se quedaron.
+
+IRC = ((Clientes al final del trimestre-Lineas activadas)/Clientes al inicio del trimestre)*100
+
+---
+
+Tasa de cancelación o churn rate:
+Mide qué porcentaje de líneas en servicio se dieron de baja en un trimestre.
+
+CR = (Lineas retiradas/Clientes al inicio del trimestre)*100
+
+---
+
+Relación de retiradas vs activaciones:
+Mide cuántas líneas se retiraron por cada línea activada.
+
+RRA = Lineas retiradas/lineas activadas
