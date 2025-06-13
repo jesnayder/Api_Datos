@@ -37,7 +37,7 @@ Este conjunto de datos permite observar el comportamiento del mercado móvil a l
 
 - **Lenguaje**: Python
 - **Consumo de API**: `requests`
-- **Almacenamiento**: Base de datos relacional (PostgreSQL o SQLite)
+- **Almacenamiento**: Base de datos relacional (PostgreSQL)
 - **ORM**: SQLAlchemy
 - **Visualización**: matplotlib, seaborn, pandas
 - **Interfaz de usuario**: Menú CLI (línea de comandos)
@@ -48,7 +48,7 @@ Este conjunto de datos permite observar el comportamiento del mercado móvil a l
 
 1. **Clona el repositorio:**
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/jesnayder/Api_Datos.git
    cd Api_Datos-main
 
 2. **Instala las dependencias:**
@@ -62,6 +62,7 @@ Si tienes el archivo `requirements.txt`, simplemente ejecuta:
 3. **Configura la base de datos:**
 
 El proyecto utiliza SQLAlchemy. Asegúrate de tener configurado el archivo de conexión en la carpeta `db`/.
+Crear bases de datos: "datos" y "datos_test" y asignarle los permisos.
 
 4. **Ejecuta el menú principal:**
     ```bash
