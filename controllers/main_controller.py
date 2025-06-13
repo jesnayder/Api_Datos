@@ -4,6 +4,7 @@ from db import engine
 from db import Session
 import matplotlib.pyplot as plt
 import seaborn as sns
+from views.charts import graficar_retencion_por_trimestre, graficar_churnrate_por_trimestre     
 
 class MainController:
     def __init__(self):
@@ -284,41 +285,12 @@ class MainController:
             proveedores = self._obtener_proveedores(session)
             periodos, trimestres_orden = self._obtener_periodos(session)
             resumen = self._construir_resumen(session, proveedores, periodos, trimestres_orden)
-
-            data = []
-            for proveedor, datos in resumen.items():
-                for d in datos:
-                    clientes_inicio = d['clientes_inicio']
-                    clientes_finales = d['clientes_finales']
-                    clientes_nuevos = d['clientes_nuevos']
-                    if clientes_inicio > 0:
-                        retencion = (clientes_finales - clientes_nuevos) / clientes_inicio * 100
-                        periodo = f"{d['año']}-Q{d['trimestre']}"
-                        data.append({
-                            'Proveedor': proveedor,
-                            'Periodo': periodo,
-                            'Retencion (%)': retencion
-                        })
-
-            if not data:
-                print("No hay datos suficientes para graficar la retención.")
-                return
-
-            import pandas as pd
-            df = pd.DataFrame(data)
-            plt.figure(figsize=(12, 6))
-            sns.lineplot(data=df, x='Periodo', y='Retencion (%)', hue='Proveedor', marker='o')
-            plt.title('Evolución del porcentaje de Retención por Trimestre y Proveedor')
-            plt.xlabel('Trimestre')
-            plt.ylabel('Retención (%)')
-            plt.xticks(rotation=45)
-            plt.legend(title='Proveedor')
-            plt.tight_layout()
-            plt.show()
+            graficar_retencion_por_trimestre(resumen)
         except Exception as e:
             print(f"[ERROR] No se pudo generar el gráfico de retención: {e}")
         finally:
             session.close()
+
 
     def graficar_churnrate_por_trimestre(self):
         session = Session()
@@ -326,47 +298,21 @@ class MainController:
             proveedores = self._obtener_proveedores(session)
             periodos, trimestres_orden = self._obtener_periodos(session)
             resumen = self._construir_resumen(session, proveedores, periodos, trimestres_orden)
-
-            data = []
-            for proveedor, datos in resumen.items():
-                for d in datos:
-                    clientes_inicio = d['clientes_inicio']
-                    lineas_retiradas = d.get('lineas_retiradas', 0)
-                    if clientes_inicio and clientes_inicio > 0:
-                        churn = (lineas_retiradas / clientes_inicio) * 100
-                        periodo = f"{d['año']}-Q{d['trimestre']}"
-                        data.append({
-                            'Proveedor': proveedor,
-                            'Periodo': periodo,
-                            'ChurnRate (%)': churn
-                        })
-
-            if not data:
-                print("No hay datos suficientes para graficar el churn rate.")
-                return
-
-            import pandas as pd
-            df = pd.DataFrame(data)
-            plt.figure(figsize=(12, 6))
-            sns.lineplot(data=df, x='Periodo', y='ChurnRate (%)', hue='Proveedor', marker='o')
-            plt.title('Evolución del Churn Rate por Trimestre y Proveedor')
-            plt.xlabel('Trimestre')
-            plt.ylabel('Churn Rate (%)')
-            plt.xticks(rotation=45)
-            plt.legend(title='Proveedor')
-            plt.tight_layout()
-            plt.show()
+            graficar_churnrate_por_trimestre(resumen)
         except Exception as e:
             print(f"[ERROR] No se pudo generar el gráfico de churn rate: {e}")
         finally:
             session.close()
 
 
-
-
-
-
-
-
-
-
+    def graficar_churnrate_por_trimestre(self):
+        session = Session()
+        try:
+            proveedores = self._obtener_proveedores(session)
+            periodos, trimestres_orden = self._obtener_periodos(session)
+            resumen = self._construir_resumen(session, proveedores, periodos, trimestres_orden)
+            graficar_churnrate_por_trimestre(resumen)
+        except Exception as e:
+            print(f"[ERROR] No se pudo generar el gráfico de churn rate: {e}")
+        finally:
+            session.close()
